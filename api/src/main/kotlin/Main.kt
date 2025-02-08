@@ -1,5 +1,10 @@
 package com.example
 
+import id.my.hendisantika.LibraryUtility
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+import org.springframework.stereotype.Service
+
 /**
  * Created by IntelliJ IDEA.
  * Project : Default (Template) Project
@@ -12,15 +17,17 @@ package com.example
  * To change this template use File | Settings | File Templates.
  *///TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-fun main() {
-    val name = "Kotlin"
-    //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-    // to see how IntelliJ IDEA suggests fixing it.
-    println("Hello, " + name + "!")
+@SpringBootApplication
+class MultimoduleExampleApplication
 
-    for (i in 1..5) {
-        //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-        // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-        println("i = $i")
+@Service
+class MyService {
+
+    fun getFoo(): String {
+        return LibraryUtility.getFoo()
     }
+}
+
+fun main(args: Array<String>) {
+    runApplication<MultimoduleExampleApplication>(*args)
 }

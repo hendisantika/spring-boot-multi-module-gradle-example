@@ -1,26 +1,34 @@
-plugins {
-    id 'org.jetbrains.kotlin.jvm'
+//plugins {
+//    id 'org.jetbrains.kotlin.jvm'
+//}
+//
+//group = 'id.my.hendisantika'
+//version = '0.0.1-SNAPSHOT'
+//
+//repositories {
+//    mavenCentral()
+//}
+//
+//dependencies {
+//    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+//}
+//
+//test {
+//    useJUnitPlatform()
+//}
+
+//bootJar.enabled = false
+bootJar {
+    enabled = false
 }
-
-group = 'id.my.hendisantika'
-version = '0.0.1-SNAPSHOT'
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testImplementation 'org.jetbrains.kotlin:kotlin-test'
-}
-
-test {
-    useJUnitPlatform()
-}
-
-bootJar.enabled = false
 
 jar {
     enabled = true
-    manifest.attributes["Implementation-Version"] = version
-    baseName = "library"
+//    manifest.attributes["Implementation-Version"] = version
+    manifest {
+        attributes(
+                "Implementation-Version": version
+        )
+    }
+    archiveBaseName.set("library")
 }

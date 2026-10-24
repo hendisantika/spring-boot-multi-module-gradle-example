@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 buildscript {
     ext {
         springBootVersion = '4.1.1'
@@ -33,8 +31,18 @@ subprojects {
     apply plugin: "org.springframework.boot"
     apply plugin: "io.spring.dependency-management"
 
-    sourceCompatibility = JavaVersion.VERSION_23
-    targetCompatibility = JavaVersion.VERSION_23
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(25)
+        }
+    }
+
+    kotlin {
+        jvmToolchain(25)
+        compilerOptions {
+            freeCompilerArgs.add('-Xjsr305=strict')
+        }
+    }
 
     dependencies {
         implementation 'org.springframework.boot:spring-boot-starter'
@@ -46,13 +54,6 @@ subprojects {
 
     tasks.named('test') {
         useJUnitPlatform()
-    }
-
-    tasks.withType(KotlinCompile) {
-        kotlinOptions {
-            freeCompilerArgs = ['-Xjsr305=strict']
-            jvmTarget = JavaVersion.VERSION_17
-        }
     }
 }
 

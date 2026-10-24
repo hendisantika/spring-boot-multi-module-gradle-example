@@ -43,7 +43,7 @@ The `api` module is a runnable Spring Boot application that depends on a plain
 ./gradlew :api:bootRun
 
 # Or run the packaged jar
-java -jar api/build/libs/api-0.0.1-SNAPSHOT.jar
+java -jar api/build/libs/api.jar
 ```
 
 ## CI/CD
